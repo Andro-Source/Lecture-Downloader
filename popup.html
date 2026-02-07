@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f172a;
+        --panel: #111827;
+        --accent: #22d3ee;
+        --accent-strong: #06b6d4;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --ring: rgba(34, 211, 238, 0.35);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        width: 320px;
+        margin: 0;
+        font-family:
+          "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+          Arial, sans-serif;
+        padding: 16px;
+        background:
+          radial-gradient(
+            140% 120% at 0% 0%,
+            rgba(34, 211, 238, 0.12),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+      }
+      .card {
+        background: linear-gradient(160deg, rgba(15, 23, 42, 0.9), #0b1224);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.45);
+      }
+      .title {
+        margin: 0;
+        font-size: 1.05rem;
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .title::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), #38bdf8);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+      }
+      .status {
+        margin: 12px 0 14px;
+        font-size: 0.85rem;
+        line-height: 1.35;
+        color: var(--muted);
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.55);
+        border: 1px dashed rgba(148, 163, 184, 0.25);
+      }
+      .field {
+        margin-bottom: 10px;
+      }
+      .field label {
+        display: block;
+        font-size: 0.75rem;
+        color: rgba(226, 232, 240, 0.7);
+        margin-bottom: 6px;
+      }
+      select {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(15, 23, 42, 0.8);
+        color: var(--text);
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+      button {
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-strong)
+        );
+        color: #0b1120;
+        border: none;
+        padding: 11px 14px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 10px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition:
+          transform 0.12s ease,
+          box-shadow 0.12s ease;
+        box-shadow: 0 10px 18px rgba(34, 211, 238, 0.25);
+      }
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 24px rgba(34, 211, 238, 0.35);
+      }
+      button:active {
+        transform: translateY(0);
+      }
+      button:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+      }
+      .hidden {
+        display: none;
+      }
+      .hint {
+        margin-top: 12px;
+        font-size: 0.72rem;
+        color: rgba(226, 232, 240, 0.55);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h3 class="title">Lecture Downloader</h3>
+      <div id="status" class="status">
+        No stream candidates detected yet. Play the lecture first.
+      </div>
+      <div id="selectorWrap" class="hidden">
+        <div class="field">
+          <label for="segmentSelect">Choose stream candidate</label>
+          <select id="segmentSelect"></select>
+        </div>
+        <button id="dlBtn">Download MP4</button>
+      </div>
+      <div class="hint">
+        Tip: each entry is one unique captured stream candidate.
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

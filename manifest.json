@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Lecture Downloader",
+  "version": "0.5",
+  "permissions": [
+    "declarativeNetRequest",
+    "webRequest",
+    "storage",
+    "tabs",
+    "downloads",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": ["*://*.podcast.ucsd.edu//*", "*://cfvod.kaltura.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
