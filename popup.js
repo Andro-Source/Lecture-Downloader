@@ -91,14 +91,7 @@ async function getLectureTitle(tabId) {
     const results = await chrome.scripting.executeScript({
       target: { tabId },
       func: () => {
-        const selectors = [
-          "div.span9 h1.entryTitle",
-          ".span9 h1.entryTitle",
-          "#lecture_Panel #LectureHeader h2",
-          "h1.page-title",
-          "h1",
-          "[data-testid='title']",
-        ];
+        const selectors = [".span9 h1", "#lecture_Panel #LectureHeader h2"];
 
         for (const selector of selectors) {
           const el = document.querySelector(selector);
